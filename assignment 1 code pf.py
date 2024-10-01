@@ -83,11 +83,11 @@ class Guest:
     # Scenario 1: Guest Management
     # Use Case 1.1: Register a new guest
     def register_guest(self):
-        pass 
+        pass
 
     # Use Case 1.2: Update guest information
     def update_guest_info(self):
-        pass 
+        pass
 
 # Class to represent a room in the hotel
 class Room:
@@ -150,7 +150,7 @@ class Room:
 
     def set_occupied_by(self, occupied_by):
         self.occupied_by = occupied_by
-  
+
     def is_available(self):  # Add the is_available method
         return self.availability
 
@@ -165,11 +165,12 @@ class Room:
     # Scenario 2: Room Management
     # Use Case 2.1: Add a new room to the hotel
     def add_room(self):
-        pass 
+        pass
 
     # Use Case 2.2: Check room availability
     def check_availability(self):
-        pass 
+        pass
+
 
 # Class to represent a reservation
 class Reservation:
@@ -264,10 +265,14 @@ class Reservation:
     # Scenario 3: Reservation Management
     # Use Case 3.1: Create a new reservation
     def create_reservation(self):
-        pass 
+        pass
 
     # Use Case 3.2: Cancel an existing reservation
     def cancel_reservation(self):
+        pass
+
+    # Use Case 3.3: Modify an existing reservation
+    def modify_reservation(self):
         pass
 
 # Class to represent the hotel management system
@@ -331,7 +336,7 @@ class Hotel:
     def add_room(self, room):
         self.rooms.append(room)
         self.total_rooms += 1
-        if room.availability:  
+        if room.availability:
             self.available_rooms += 1
 
     def make_reservation(self, reservation):
@@ -356,7 +361,74 @@ class Hotel:
         print("Star Rating: " + str(self.star_rating))
         print("Contact Info: " + self.contact_info)
 
-# Example usage
+# Class to represent a review for the hotel
+class Review:
+    def __init__(self, review_id, guest, rating, comment, date, room_number, hotel_name):
+        self.review_id = review_id
+        self.guest = guest
+        self.rating = rating  # Rating out of 5
+        self.comment = comment
+        self.date = date
+        self.room_number = room_number
+        self.hotel_name = hotel_name
+
+    # Getter methods
+    def get_review_id(self):
+        return self.review_id
+
+    def get_guest(self):
+        return self.guest
+
+    def get_rating(self):
+        return self.rating
+
+    def get_comment(self):
+        return self.comment
+
+    def get_date(self):
+        return self.date
+
+    def get_room_number(self):
+        return self.room_number
+
+    def get_hotel_name(self):
+        return self.hotel_name
+
+    # Setter methods
+    def set_review_id(self, review_id):
+        self.review_id = review_id
+
+    def set_guest(self, guest):
+        self.guest = guest
+
+    def set_rating(self, rating):
+        self.rating = rating
+
+    def set_comment(self, comment):
+        self.comment = comment
+
+    def set_date(self, date):
+        self.date = date
+
+    def set_room_number(self, room_number):
+        self.room_number = room_number
+
+    def set_hotel_name(self, hotel_name):
+        self.hotel_name = hotel_name
+
+    # Function to display review details
+    def display_review_info(self):
+        print("Review ID: " + self.review_id)
+        print("Guest Name: " + self.guest.get_name())
+        print("Room Number: " + str(self.room_number))
+        print("Hotel Name: " + self.hotel_name)
+        print("Rating: " + str(self.rating) + "/5")
+        print("Comment: " + self.comment)
+        print("Date: " + self.date)
+
+    # Use Case 4.1: Add a new review
+    def add_review(self):
+        pass
 
 # Creating guest object
 print("Guest Information")
@@ -366,8 +438,8 @@ print()
 
 # Creating room objects
 print("Room Information")
-room1 = Room(101, "Single", 100, 1) 
-room2 = Room(102, "Double", 150, 2) 
+room1 = Room(101, "Single", 100, 1)
+room2 = Room(102, "Double", 150, 2)
 
 room1.display_room_info()
 room2.display_room_info()
@@ -375,7 +447,7 @@ print()
 
 # Creating a hotel object
 print("Hotel Information")
-hotel = Hotel("Grand Abu Dhabi Hotel", "Abu Dhabi", 5, 200, 150, 5, "+971 2 123 4567") 
+hotel = Hotel("Grand Abu Dhabi Hotel", "Abu Dhabi", 5, 200, 150, 5, "+971 2 123 4567")
 hotel.display_hotel_info()
 print()
 
@@ -384,7 +456,7 @@ hotel.add_room(room1)
 hotel.add_room(room2)
 
 # Creating reservation object
-reservation1 = Reservation("R001", guest1, room1, "2024-10-01", "2024-10-05", 2) 
+reservation1 = Reservation("R001", guest1, room1, "2024-10-01", "2024-10-05", 2)
 
 # Making a reservation for a guest
 print("Reservation Information")
@@ -394,4 +466,10 @@ print()
 # Displaying all reservations
 print("All Reservations")
 hotel.display_all_reservations()
+print()
 
+# Display Review Information
+print("Review Information")
+guest1 = Guest("Aisha", "aisha@gmail.com", "555-6789", "Abu Dhabi", "G002", "UAE", "2024-07-22")
+review1 = Review("R001", guest1, 4, "Great service and comfortable stay!", "2024-10-05", 101, "Grand Abu Dhabi Hotel")
+review1.display_review_info()
